@@ -1,0 +1,353 @@
+/* ==========================================================================
+   ANIMATIONS.CSS - CSS Keyframes and Hardware Accelerated Motion Sequences
+   ========================================================================== */
+
+/* --- Simple Blink Animation --- */
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* --- Floating Animation --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* --- Mouse Scroll Wheel Movement --- */
+@keyframes scrollWheel {
+    0% {
+        top: 6px;
+        opacity: 1;
+        height: 6px;
+    }
+    50% {
+        top: 18px;
+        opacity: 0.4;
+        height: 10px;
+    }
+    100% {
+        top: 6px;
+        opacity: 1;
+        height: 6px;
+    }
+}
+
+/* --- Pulse Aura Glow --- */
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.55;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 0.95;
+    }
+}
+
+/* ==========================================================================
+   ORBITAL ANIMATION MATRIX
+   ========================================================================== */
+/* ==========================================================================
+   TRUE ORBIT ANIMATION
+   ========================================================================== */
+
+.orbit-item{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:80px;
+    height:80px;
+
+    margin:-40px;
+
+    transform-origin:0 0;
+
+}
+
+/* Starting angles */
+
+.orbit-github{
+
+    --angle:0deg;
+
+    animation:orbitGithub 35s linear infinite;
+
+}
+
+.orbit-linkedin{
+
+    --angle:72deg;
+
+    animation:orbitLinkedin 35s linear infinite;
+
+}
+
+.orbit-leetcode{
+
+    --angle:144deg;
+
+    animation:orbitLeetcode 35s linear infinite;
+
+}
+
+.orbit-resume{
+
+    --angle:216deg;
+
+    animation:orbitResume 35s linear infinite;
+
+}
+
+.orbit-email{
+
+    --angle:288deg;
+
+    animation:orbitEmail 35s linear infinite;
+
+}
+
+/* Forward Turn (Right Page) */
+
+.right-page.turn{
+
+    transform-origin:left center;
+
+    animation:pageTurn .85s cubic-bezier(.22,.61,.36,1) forwards;
+
+    z-index:999;
+
+}
+
+/* Backward Turn (Left Page) */
+
+.left-page.turn-back{
+
+    transform-origin:right center;
+
+    animation:pageTurnBack .85s cubic-bezier(.22,.61,.36,1) forwards;
+
+    z-index:999;
+
+}
+
+/* Individual animations */
+
+@keyframes orbitGithub{
+
+    from{
+        transform:rotate(0deg) translateX(210px) rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg) translateX(210px) rotate(-360deg);
+    }
+
+}
+
+@keyframes orbitLinkedin{
+
+    from{
+        transform:rotate(72deg) translateX(210px) rotate(-72deg);
+    }
+
+    to{
+        transform:rotate(432deg) translateX(210px) rotate(-432deg);
+    }
+
+}
+
+@keyframes orbitLeetcode{
+
+    from{
+        transform:rotate(144deg) translateX(210px) rotate(-144deg);
+    }
+
+    to{
+        transform:rotate(504deg) translateX(210px) rotate(-504deg);
+    }
+
+}
+
+@keyframes orbitResume{
+
+    from{
+        transform:rotate(216deg) translateX(210px) rotate(-216deg);
+    }
+
+    to{
+        transform:rotate(576deg) translateX(210px) rotate(-576deg);
+    }
+
+}
+
+@keyframes orbitEmail{
+
+    from{
+        transform:rotate(288deg) translateX(210px) rotate(-288deg);
+    }
+
+    to{
+        transform:rotate(648deg) translateX(210px) rotate(-648deg);
+    }
+
+}
+
+/* ==========================================================================
+   LIGHT MODE BACKDROP ANIMATIONS
+   ========================================================================== */
+
+/* Clouds Drifting */
+@keyframes driftCloud {
+    0% {
+        transform: translate3d(-200px, 0, 0);
+    }
+    100% {
+        transform: translate3d(calc(100vw + 200px), 0, 0);
+    }
+}
+
+/* Flying Birds wings flapping and translation */
+@keyframes birdFlight {
+    0% {
+        transform: translate3d(-100px, 15vh, 0) scale(0.6);
+    }
+    50% {
+        transform: translate3d(50vw, 8vh, 0) scale(0.85);
+    }
+    100% {
+        transform: translate3d(calc(100vw + 100px), 18vh, 0) scale(0.65);
+    }
+}
+
+/* Leaves Falling & Swaying */
+@keyframes leafFloat {
+    0% {
+        transform: translate3d(0, -100px, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(80px, 50vh, 0) rotate(180deg);
+    }
+    100% {
+        transform: translate3d(-50px, 110vh, 0) rotate(360deg);
+    }
+}
+
+/* Flower Spin */
+@keyframes flowerSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   NIGHT MODE BACKDROP ANIMATIONS
+   ========================================================================== */
+
+/* Stars Twinkling */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Fireflies floating pathway */
+@keyframes fireflyFloat {
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translate3d(30px, -40px, 0);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translate3d(-20px, -80px, 0);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate3d(40px, -120px, 0);
+        opacity: 0.85;
+    }
+}
+
+/* Bats swooping */
+@keyframes batSwoop {
+    0% {
+        transform: translate3d(-100px, 70vh, 0) scale(0.4) rotate(15deg);
+    }
+    40% {
+        transform: translate3d(40vw, 40vh, 0) scale(0.7) rotate(-10deg);
+    }
+    100% {
+        transform: translate3d(calc(100vw + 100px), 10vh, 0) scale(0.5) rotate(20deg);
+    }
+}
+
+/* ==========================================================================
+   SCROLL REVEAL UTILITIES
+   ========================================================================== */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@keyframes pageTurn{
+
+    0%{
+
+        transform:rotateY(0deg);
+
+        box-shadow:0 20px 35px rgba(0,0,0,.18);
+
+    }
+
+    40%{
+
+        box-shadow:-30px 25px 40px rgba(0,0,0,.35);
+
+    }
+
+    100%{
+
+        transform:rotateY(-180deg);
+
+        box-shadow:-50px 20px 45px rgba(0,0,0,.18);
+
+    }
+
+}
+
+@keyframes pageTurnBack{
+
+    0%{
+
+        transform:rotateY(-180deg);
+
+        box-shadow:50px 20px 45px rgba(0,0,0,.18);
+
+    }
+
+    60%{
+
+        box-shadow:30px 25px 40px rgba(0,0,0,.35);
+
+    }
+
+    100%{
+
+        transform:rotateY(0deg);
+
+        box-shadow:0 20px 35px rgba(0,0,0,.18);
+
+    }
+
+}

@@ -1,0 +1,259 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Media Queries for Mobile, Tablet, and Large Screens
+   ========================================================================== */
+
+/* --- Tablet / Medium Screens (Max 1024px) --- */
+@media screen and (max-width: 1024px) {
+    :root {
+        --container-width: 90%;
+    }
+    
+    /* Project Grid scaling */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Orbit container scale down */
+    .orbit-container{
+
+    width:420px;
+
+    height:420px;
+
+}
+
+.orbit-center{
+
+    transform:scale(.85);
+
+}
+
+.orbit-item{
+
+    transform-origin:0 0;
+
+}
+
+@keyframes orbitGithub{
+
+    from{transform:rotate(0deg) translateX(160px) rotate(0deg);}
+    to{transform:rotate(360deg) translateX(160px) rotate(-360deg);}
+
+}
+
+@keyframes orbitLinkedin{
+
+    from{transform:rotate(72deg) translateX(160px) rotate(-72deg);}
+    to{transform:rotate(432deg) translateX(160px) rotate(-432deg);}
+
+}
+
+@keyframes orbitLeetcode{
+
+    from{transform:rotate(144deg) translateX(160px) rotate(-144deg);}
+    to{transform:rotate(504deg) translateX(160px) rotate(-504deg);}
+
+}
+
+@keyframes orbitResume{
+
+    from{transform:rotate(216deg) translateX(160px) rotate(-216deg);}
+    to{transform:rotate(576deg) translateX(160px) rotate(-576deg);}
+
+}
+
+@keyframes orbitEmail{
+
+    from{transform:rotate(288deg) translateX(160px) rotate(-288deg);}
+    to{transform:rotate(648deg) translateX(160px) rotate(-648deg);}
+
+}
+    
+    .orbit-center {
+        width: 120px;
+        height: 120px;
+    }
+    
+    }
+
+/* --- Small Screens / Mobile-First Adapt (Max 850px) --- */
+@media screen and (max-width: 850px) {
+    /* Hide custom cursor on touch devices to avoid lagging/clunky feel */
+    .custom-cursor, .custom-cursor-trail {
+        display: none !important;
+    }
+    
+    body {
+        cursor: auto !important;
+    }
+    
+    .btn, a, button, input, textarea {
+        cursor: auto !important;
+    }
+
+    /* Section padding updates */
+    section {
+        padding: 5rem 1.25rem;
+    }
+
+    .section-title {
+        font-size: 2.3rem;
+    }
+
+    /* Navbar Hamburger Menu Toggle */
+    .mobile-nav-toggle {
+        display: block;
+        z-index: 110;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--bg-secondary);
+        border-left: 1px solid var(--glass-border);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Hero adjustments */
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtext {
+        font-size: 1.1rem;
+    }
+
+    
+
+/* --- Tiny Mobile Screens (Max 550px) --- */
+@media screen and (max-width: 550px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    /* Projects stack to 1 column */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Skills Timeline align left */
+    .skills-timeline::before {
+        left: 20px;
+    }
+
+    .skill-item-card {
+        gap: 1rem;
+    }
+
+    .skill-icon-box {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+        border-width: 1px;
+    }
+
+    .skill-details {
+        padding: 1.25rem;
+    }
+
+    .skill-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .skill-name {
+        font-size: 1.15rem;
+    }
+
+    .orbit-container{
+
+    position:relative;
+
+    width:550px;
+
+    height:550px;
+
+    margin:2rem auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+    .orbit-center {
+        display: none !important; /* Hide central illustration in mobile view */
+    }
+
+    .orbit-item {
+        position: static !important;
+        animation: none !important;
+        width: 80px;
+        height: 80px;
+        margin: 0 !important;
+    }
+
+    .orbit-item a {
+        border-radius: var(--border-radius-sm);
+    }
+
+    .orbit-label {
+        position: static !important;
+        opacity: 1;
+        pointer-events: auto;
+        background: none;
+        border: none;
+        padding: 0;
+        margin-top: 4px;
+        font-size: 0.7rem;
+    }
+
+    /* Terminal padding scale down */
+    .terminal-content {
+        padding: 1rem;
+    }
+
+    .terminal-form {
+        gap: 1rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .sql-label {
+        width: auto;
+    }
+
+    .terminal-input, .terminal-textarea {
+        width: 100%;
+    }
+
+    .form-submit-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .terminal-submit-btn {
+        width: 100%;
+    }
+}

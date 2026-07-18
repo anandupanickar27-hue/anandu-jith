@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive, immersive 3D developer portfolio showcasing projects, skills. Designed with modern aesthetics.">
+    <title>Anandu Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons for UI Elements -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Project Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Custom Cursor Elements -->
+    <div id="custom-cursor" class="custom-cursor"></div>
+    <div id="custom-cursor-trail" class="custom-cursor-trail"></div>
+
+    <!-- Theme Backdrop Wrapper (Spawns background birds, stars, bats, leaves, etc.) -->
+    <div id="theme-backdrop" class="theme-backdrop">
+        <!-- Floating theme-specific elements will be dynamically injected here by theme.js -->
+    </div>
+
+    <!-- Background Particle Canvas for Hero Section -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- FIXED TRANSPARENT NAVBAR -->
+    <nav class="navbar" id="main-navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo" id="nav-logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">ANANDU JITH PANICKAR</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#socials" class="nav-link">Links</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <!-- Theme Toggle Button -->
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle theme mode">
+                        <span class="toggle-icon-container">
+                            <i class="fa-solid fa-sun icon-sun"></i>
+                            <i class="fa-solid fa-moon icon-moon"></i>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Late-night chats with AI <br>
+                Tea with humans <br>
+                <span class="gradient-text">Both remind me there's more to learn</span>
+            </h1>
+            <p class="hero-subtext">
+                Just someone who enjoys asking questions, learning new things,
+                and building projects that make each day a little more interesting
+                than the last.
+            </p>
+            
+            
+            <div class="hero-btn-wrapper">
+                <a href="#projects" class="btn btn-primary" id="begin-journey-btn">
+                    <span>Begin </span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Mouse Scroll Indicator -->
+        <div class="scroll-indicator" id="scroll-indicator">
+            <span class="mouse-icon">
+                <span class="mouse-wheel"></span>
+            </span>
+            <span class="scroll-text">SCROLL TO EXPLORE</span>
+        </div>
+    </section>
+
+
+
+
+    <!-- PROJECT SECTION -->
+    <section id="projects" class="projects-section scroll-reveal">
+        <div class="section-header">
+            <span class="section-tag">CREATIVE_LAB // 02</span>
+            <h2 class="section-title">Selected Projects</h2>
+            <p class="section-desc">A showcase of projects I built.</p>
+        </div>
+
+        <div class="projects-grid">
+
+    <!-- Mekanik -->
+
+    <div class="project-card" data-cursor-text="CLICK">
+
+        <div class="project-logo">
+
+            <img src="static/images/projects/mekanik.png" alt="Mekanik">
+
+        </div>
+
+        <h3>Mekanik</h3>
+
+        <p>AI Vehicle Service Platform</p>
+
+        <div class="project-tags">
+
+            <span>Flask</span>
+            <span>MySQL</span>
+            <span>Docker</span>
+
+        </div>
+
+
+    </div>
+
+    <!-- Impruv -->
+
+    <div class="project-card" data-cursor-text="CLICK">
+
+        <div class="project-logo">
+
+            <img src="static/images/projects/impruv.png" alt="Impruv">
+
+        </div>
+
+        <h3>Impruv</h3>
+
+        <p>Student Skill Evaluation System</p>
+
+        <div class="project-tags">
+
+            <span>Flask</span>
+            <span>MySQL</span>
+            <span>JavaScript</span>
+
+        </div>
+
+        
+
+    </div>
+
+    <!-- Notes App -->
+
+    <div class="project-card" data-cursor-text="CLICK">
+
+        <div class="project-logo">
+
+            <img src="static/images/projects/notes.png" alt="Notes App">
+
+        </div>
+
+        <h3>Notes App</h3>
+
+        <p>CRUD Notes Application</p>
+
+        <div class="project-tags">
+
+            <span>Django</span>
+            <span>SQLite</span>
+
+        </div>
+
+        
+
+    </div>
+
+</div>
+<br>
+                <p class="section-desc">Checkout more on my GitHub.</p>
+
+    </section>
+
+    <!-- SKILLS SECTION (Vertical Timeline Skill Showcase) -->
+    <section id="skills" class="skills-section scroll-reveal">
+        <div class="section-header">
+            <span class="section-tag">ENGINEERING // 03</span>
+            <h2 class="section-title">Skills</h2>
+            <p class="section-desc">My digital superpowers.</p>
+        </div>
+
+        <div class="skills-list" id="skills-list">
+
+    <div class="skill-name" data-icon="devicon-python-plain">Python</div>
+
+    <div class="skill-name" data-icon="devicon-django-plain">Django</div>
+
+    <div class="skill-name" data-icon="devicon-flask-original">Flask</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-js">JavaScript</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-react">React</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-html5">HTML5</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-css3-alt">CSS3</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-bootstrap">Bootstrap</div>
+
+    <div class="skill-name" data-icon="devicon-mysql-plain">MySQL</div>
+
+    <div class="skill-name" data-icon="devicon-mongodb-plain">MongoDB</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-git-alt">Git</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-github">GitHub</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-docker">Docker</div>
+
+    <div class="skill-name" data-icon="fa-brands fa-linux">Linux</div>
+
+</div>
+    </section>
+
+    <!-- SOCIAL / LINKS SECTION -->
+    <section id="socials" class="socials-section scroll-reveal">
+        <div class="section-header">
+            <span class="section-tag">NETWORK // 04</span>
+            <h2 class="section-title">Know More About Me.</h2>
+            <p class="section-desc">Navigate through my digital universe.</p>
+        </div>
+
+        <div class="orbit-center">
+
+    <img
+        src="images/character-day.png"
+        alt="Anandu"
+        id="character"
+        class="character"
+    >
+
+    <div class="orbit-center-glow"></div>
+
+</div>
+
+            <!-- Floating Orbital Cards -->
+            <div class="orbit-item orbit-github" data-cursor-text="VIEW GITHUB" style="--orbit-delay: 0s;">
+                <a href="https://github.com/anandupanickar27-hue" target="_blank" rel="noopener" aria-label="Github Profile">
+                    <i class="fa-brands fa-github"></i>
+                    <span class="orbit-label">GitHub</span>
+                </a>
+            </div>
+
+            <div class="orbit-item orbit-linkedin" data-cursor-text="CONNECT" style="--orbit-delay: -3s;">
+                <a href="https://www.linkedin.com/in/anandu-panickar/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span class="orbit-label">LinkedIn</span>
+                </a>
+            </div>
+
+            <div class="orbit-item orbit-leetcode" data-cursor-text="SOLVE PROBLEMS" style="--orbit-delay: -6s;">
+                <a href="https://leetcode.com/u/Anandu_Jith/" target="_blank" rel="noopener" aria-label="LeetCode Profile">
+                    <i class="fa-solid fa-code"></i>
+                    <span class="orbit-label">LeetCode</span>
+                </a>
+            </div>
+
+            <div class="orbit-item orbit-resume" data-cursor-text="DOWNLOAD RESUME" style="--orbit-delay: -9s;">
+                <a href="images/Anandu_jith_Resume.pdf" aria-label="Resume Document">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span class="orbit-label">Resume</span>
+                </a>
+            </div>
+
+            <div class="orbit-item orbit-email" data-cursor-text="SEND EMAIL" style="--orbit-delay: -12s;">
+                <a href="mailto:anandupanickar27@gmail.com?subject=Inquiry&body=Hi%20Anandu,%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ARegards,">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="orbit-label">Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+<section id="contact" class="contact-section scroll-reveal">
+
+    <div class="section-header">
+
+        <span class="section-tag">
+            MYSQL // CONTACT
+        </span>
+
+        <h2 class="section-title">
+            MySQL Console
+        </h2>
+
+        <p class="section-desc">
+            Insert your message into my portfolio database.
+        </p>
+
+    </div>
+
+    <!-- MAIN TERMINAL -->
+
+    <div class="terminal-container">
+
+        <div class="terminal-header">
+
+            <div class="terminal-buttons">
+                <span class="terminal-btn close"></span>
+                <span class="terminal-btn minimize"></span>
+                <span class="terminal-btn expand"></span>
+            </div>
+
+            <div class="terminal-title">
+                MySQL 8.4 LTS | localhost:3306
+            </div>
+
+            <div class="terminal-status">
+                <i class="fa-solid fa-database"></i>
+                CONNECTED
+            </div>
+
+        </div>
+
+        <div class="terminal-content">
+
+            <div class="terminal-prompt-intro">
+
+                <p>
+                    mysql> CREATE DATABASE IF NOT EXISTS portfolio;
+                </p>
+
+                <p class="terminal-green">
+                    Query OK, 1 row affected
+                </p>
+
+                <p>
+                    mysql> USE portfolio;
+                </p>
+
+                <p class="terminal-green">
+                    Database changed
+                </p>
+
+                <br>
+
+                <p>
+                    mysql> INSERT INTO contacts (
+                </p>
+
+            </div>
+
+            <form id="contact-terminal-form" class="terminal-form" autocomplete="off">
+
+                <div class="form-row">
+
+                    <span class="sql-label">
+                        name :
+                    </span>
+
+                    <input
+                        type="text"
+                        id="sql-name"
+                        name="name"
+                        class="terminal-input"
+                        placeholder="'John Doe'"
+                        required>
+
+                </div>
+
+                <div class="form-row">
+
+                    <span class="sql-label">
+                        email :
+                    </span>
+
+                    <input
+                        type="email"
+                        id="sql-email"
+                        name="email"
+                        class="terminal-input"
+                        placeholder="'john@gmail.com'"
+                        required>
+
+                </div>
+
+                <div class="form-row">
+
+                    <span class="sql-label">
+                        subject :
+                    </span>
+
+                    <input
+                        type="text"
+                        id="sql-subject"
+                        name="subject"
+                        class="terminal-input"
+                        placeholder="'Project Discussion'"
+                        required>
+
+                </div>
+
+                <div class="form-row text-area-row">
+
+                    <span class="sql-label">
+                        message :
+                    </span>
+
+                    <textarea
+                        id="sql-message"
+                        name="message"
+                        class="terminal-textarea"
+                        placeholder="'Hello Anandu...'"
+                        required></textarea>
+
+                </div>
+
+                <div class="form-submit-row">
+
+                    <span class="terminal-syntax">
+                        );
+                    </span>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary terminal-submit-btn"
+                        id="terminal-submit-btn">
+
+                        <i class="fa-solid fa-play"></i>
+
+                        Run Query
+
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div class="terminal-outputs" id="terminal-outputs"></div>
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION OUTSIDE TERMINAL -->
+
+    <div class="contact-query-wrapper">
+
+        <p class="contact-query-text">
+
+            Curious who has connected with me?
+
+        </p>
+
+    </div>
+
+    <!-- MINI MYSQL TERMINAL -->
+
+    <div id="mini-terminal-output" class="terminal-outputs"></div>
+
+<button
+    class="btn btn-secondary easter-egg-btn"
+    id="query-contacts-btn"
+    type="button">
+
+    <i class="fa-solid fa-table"></i>
+
+    SELECT * FROM contacts;
+
+</button>
+
+<div
+    class="easter-egg-table-container"
+    id="easter-egg-results"
+    style="display:none;">
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="copyright">&copy; 2026 Developer Portfolio. All rights reserved. Crafted with pure HTML, CSS, JS.</p>
+            <a href="#home" class="btn-back-to-top" id="btn-back-to-top" aria-label="Back to Top" data-cursor-text="BACK TO TOP">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/script.js"></script>
+
+<!-- ===========================
+     PROJECT MODAL
+=========================== -->
+
+<div class="project-modal" id="projectModal">
+
+    <div class="project-modal-content">
+
+        <button class="close-modal" id="closeModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <div class="project-modal-logo">
+
+            <img id="modalLogo" src="" alt="Project">
+
+        </div>
+
+        <h2 id="modalTitle"></h2>
+
+        <strong><p id="modalDescription"></p></strong>
+
+        <h3>Features</h3>
+
+        <ul id="modalFeatures"></ul>
+
+        <div id="modalTech" class="project-tags"></div>
+
+        <div class="project-modal-buttons">
+
+            <a id="modalGithub" href="#" target="_blank" class="btn-project">
+
+                <i class="fa-brands fa-github"></i>
+
+                GitHub
+
+            </a>
+
+            <a id="modalLive" href="#" class="btn-project">
+
+                <i class="fa-solid fa-up-right-from-square"></i>
+
+                Live Demo
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

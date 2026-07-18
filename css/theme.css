@@ -1,0 +1,222 @@
+/* ==========================================================================
+   THEME.CSS - Light and Dark Theme Tokens & Dynamic SVG Backdrops
+   ========================================================================== */
+
+/* --- Dark Theme Variables (Default) --- */
+[data-theme="dark"] {
+    --bg-primary: #0a0f1d;
+    --bg-secondary: #0f1626;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    
+    /* Neon Cyan / Tech theme */
+    --accent-color: #06b6d4;
+    --accent-color-hover: #0891b2;
+    --accent-glow: #22d3ee;
+    --accent-glow-rgba: rgba(6, 182, 212, 0.35);
+    --accent-glow-rgba-low: rgba(6, 182, 212, 0.08);
+    
+    /* Glassmorphism settings */
+    --glass-bg: rgba(15, 23, 42, 0.45);
+    --glass-bg-scrolled: rgba(10, 15, 29, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.07);
+    
+    
+    
+    /* Background backdrop graphics dynamic */
+    --backdrop-glow: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1), transparent 60%);
+}
+
+/* --- Light Theme Variables (Warm/Aesthetic) --- */
+[data-theme="light"] {
+    --bg-primary: #fcf9f2; /* Warm Cream Sand */
+    --bg-secondary: #f4edd8; /* Warm Beige */
+    --text-primary: #2d261e; /* Deep Charcoal Brown */
+    --text-secondary: #6e6456; /* Soft Earth Gray */
+    
+    /* Warm Terracotta / Sun theme */
+    --accent-color: #e36414; /* Warm Sun Amber */
+    --accent-color-hover: #ca530f;
+    --accent-glow: #fb8b24;
+    --accent-glow-rgba: rgba(227, 100, 20, 0.25);
+    --accent-glow-rgba-low: rgba(227, 100, 20, 0.06);
+    
+    /* Glassmorphism settings */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-bg-scrolled: rgba(252, 249, 242, 0.8);
+    --glass-border: rgba(45, 38, 30, 0.08);
+    
+    
+    
+    /* Background backdrop graphics dynamic */
+    --backdrop-glow: radial-gradient(circle at 50% 50%, rgba(227, 100, 20, 0.08), transparent 60%);
+}
+
+/* ==========================================================================
+   THEME BACKDROP WRAPPER & ELEMENTS
+   ========================================================================== */
+.theme-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-backdrop);
+    pointer-events: none;
+    overflow: hidden;
+    transition: background 1.2s ease;
+}
+
+/* Glowing center theme aura */
+.theme-backdrop::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--backdrop-glow);
+    transition: var(--transition-smooth);
+}
+
+/* --- SVG Backdrop Floating Elements --- */
+.backdrop-svg-element {
+    position: absolute;
+    pointer-events: none;
+    fill: none;
+    will-change: transform, opacity;
+}
+
+/* --- Light Mode Backdrop Decorates --- */
+.day-cloud {
+    fill: rgba(255, 255, 255, 0.85);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.02));
+    animation: driftCloud 35s linear infinite;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+[data-theme="light"] .day-cloud {
+    opacity: 1;
+}
+
+.day-bird {
+    fill: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: birdFlight 18s linear infinite;
+}
+[data-theme="light"] .day-bird {
+    opacity: 0.65;
+}
+
+.day-leaf {
+    fill: var(--accent-glow);
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: leafFloat 15s linear infinite;
+}
+[data-theme="light"] .day-leaf {
+    opacity: 0.5;
+}
+
+.day-flower {
+    fill: rgba(227, 100, 20, 0.15);
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    animation: flowerSpin 22s linear infinite;
+}
+[data-theme="light"] .day-flower {
+    opacity: 1;
+}
+
+/* --- Dark Mode Backdrop Decorates --- */
+.night-star {
+    fill: #ffffff;
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: twinkle 3s ease-in-out infinite;
+}
+[data-theme="dark"] .night-star {
+    opacity: 0.85;
+}
+
+.night-firefly {
+    fill: #22d3ee;
+    filter: drop-shadow(0 0 8px #22d3ee);
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: fireflyFloat 10s ease-in-out infinite;
+}
+[data-theme="dark"] .night-firefly {
+    opacity: 0.75;
+}
+
+.night-bat {
+    fill: rgba(15, 23, 42, 0.95);
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: batSwoop 14s linear infinite;
+}
+[data-theme="dark"] .night-bat {
+    opacity: 0.35;
+}
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON COMPONENT
+   ========================================================================== */
+.theme-toggle-btn {
+    background: var(--glass-bg-scrolled);
+    border: 1px solid var(--glass-border);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow-rgba);
+    transform: scale(1.08);
+}
+
+.toggle-icon-container {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.icon-sun, .icon-moon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.15rem;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+}
+
+/* Switch transitions */
+[data-theme="dark"] .icon-sun {
+    transform: translate(-50%, -150%) rotate(90deg);
+    opacity: 0;
+}
+[data-theme="dark"] .icon-moon {
+    transform: translate(-50%, -50%) rotate(0deg);
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+[data-theme="light"] .icon-sun {
+    transform: translate(-50%, -50%) rotate(0deg);
+    color: var(--accent-color);
+    opacity: 1;
+}
+[data-theme="light"] .icon-moon {
+    transform: translate(-50%, 50%) rotate(-90deg);
+    opacity: 0;
+}
