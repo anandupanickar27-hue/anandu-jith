@@ -69,47 +69,53 @@
 }
 
 /* Starting angles */
+.orbit-github {
 
-.orbit-github{
+    --angle: 0deg;
 
-    --angle:0deg;
-
-    animation:orbitGithub 35s linear infinite;
-
-}
-
-.orbit-linkedin{
-
-    --angle:72deg;
-
-    animation:orbitLinkedin 35s linear infinite;
+    animation: orbitGithub 35s linear infinite;
 
 }
 
-.orbit-leetcode{
+.orbit-linkedin {
 
-    --angle:144deg;
+    --angle: 60deg;
 
-    animation:orbitLeetcode 35s linear infinite;
-
-}
-
-.orbit-resume{
-
-    --angle:216deg;
-
-    animation:orbitResume 35s linear infinite;
+    animation: orbitLinkedin 35s linear infinite;
 
 }
 
-.orbit-email{
+.orbit-leetcode {
 
-    --angle:288deg;
+    --angle: 120deg;
 
-    animation:orbitEmail 35s linear infinite;
+    animation: orbitLeetcode 35s linear infinite;
 
 }
 
+.orbit-resume {
+
+    --angle: 180deg;
+
+    animation: orbitResume 35s linear infinite;
+
+}
+
+.orbit-email {
+
+    --angle: 240deg;
+
+    animation: orbitEmail 35s linear infinite;
+
+}
+
+.orbit-instagram {
+
+    --angle: 300deg;
+
+    animation: orbitInstagram 35s linear infinite;
+
+}
 /* Forward Turn (Right Page) */
 
 .right-page.turn{
@@ -192,6 +198,18 @@
 
     to{
         transform:rotate(648deg) translateX(210px) rotate(-648deg);
+    }
+
+}
+
+@keyframes orbitInstagram{
+
+    from{
+        transform:rotate(360deg) translateX(210px) rotate(-360deg);
+    }
+
+    to{
+        transform:rotate(720deg) translateX(210px) rotate(-720deg);
     }
 
 }
