@@ -229,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     font-family: var(--font-mono);
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
     cursor: none;
 }
@@ -490,7 +490,7 @@ h1, h2, h3, h4, h5, h6 {
 
     border-radius:20px;
 
-    background:rgba(255,255,255,.05);
+    background:transparent;
 
     display:flex;
 
@@ -499,6 +499,12 @@ h1, h2, h3, h4, h5, h6 {
     align-items:center;
 
     overflow:hidden;
+
+}
+
+.project-logo{
+
+    transform:translateZ(35px);
 
 }
 
@@ -596,11 +602,6 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-.project-logo{
-
-    transform:translateZ(35px);
-
-}
 
 .project-card h3{
 
@@ -702,6 +703,9 @@ h1, h2, h3, h4, h5, h6 {
         0 10px 30px rgba(21, 15, 15, 0.468),
         0 0 20px rgba(192, 205, 207, 0.281);
 
+    position:relative;
+
+    overflow:visible;
 
 }
 
@@ -714,6 +718,45 @@ h1, h2, h3, h4, h5, h6 {
     color:var(--accent-color);
 
     box-shadow:0 0 25px var(--accent-glow-rgba);
+
+}
+
+
+.mobile-skill-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%) scale(0);
+
+    font-size:3rem;
+
+    color:var(--accent-color);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:5;
+
+    transition:all .3s ease;
+
+}
+
+.skill-name.active .mobile-skill-icon{
+
+    opacity:1;
+
+    transform:translate(-50%,-50%) scale(1.2);
+
+}
+
+.skill-name.active{
+
+    color:transparent;
 
 }
 
@@ -736,6 +779,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 }
+
  /* ==========================================================================
    ORBIT SECTION
 ========================================================================== */
@@ -1523,3 +1567,170 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+/* ==========================
+   Project Modal Mobile Fix
+========================== */
+
+body.modal-open{
+
+    overflow:hidden;
+
+}
+
+.project-modal-content{
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+/* ==========================
+   Live Demo Popup
+========================== */
+
+.live-demo-popup{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    z-index:10000;
+
+}
+
+.live-demo-popup.show{
+
+    display:flex;
+
+}
+
+.live-demo-box{
+
+    width:min(420px,90%);
+
+    background:var(--bg-secondary);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.live-demo-box h3{
+
+    margin-bottom:15px;
+
+}
+
+.live-demo-box p{
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+.live-demo-box button{
+
+    padding:12px 28px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+/* ==========================
+   Projects Footer
+========================== */
+
+.projects-footer{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+.github-projects-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 28px;
+
+    border:1px solid var(--glass-border);
+
+    border-radius:14px;
+
+    background:var(--glass-bg);
+
+    backdrop-filter:blur(12px);
+
+    color:var(--text-primary);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:all .35s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.github-projects-btn i{
+
+    font-size:1.2rem;
+
+}
+
+.github-projects-btn:hover{
+
+    transform:translateY(-4px);
+
+    background:var(--accent-color);
+
+    color:#fff;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.2);
+
+}
+
+[data-theme="light"] .github-projects-btn:hover{
+
+    color:#fff;
+
+}

@@ -141,119 +141,118 @@
 
 /* --- Tiny Mobile Screens (Max 550px) --- */
 @media screen and (max-width: 550px) {
-    .hero-title {
-        font-size: 2.2rem;
+
+    .hero-title{
+        font-size:2.2rem;
     }
 
-    /* Projects stack to 1 column */
-    .projects-grid {
-        grid-template-columns: 1fr;
+    /* Projects */
+    .projects-grid{
+        grid-template-columns:1fr;
     }
 
-    /* Skills Timeline align left */
-    .skills-timeline::before {
-        left: 20px;
+    /* Skills */
+    .skills-list{
+        grid-template-columns:1fr;
+        gap:20px;
     }
 
-    .skill-item-card {
-        gap: 1rem;
+    .skill-name{
+        height:75px;
+        font-size:1.1rem;
     }
 
-    .skill-icon-box {
-        width: 48px;
-        height: 48px;
-        font-size: 1.5rem;
-        border-width: 1px;
-    }
-
-    .skill-details {
-        padding: 1.25rem;
-    }
-
-    .skill-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-
-    .skill-name {
-        font-size: 1.15rem;
-    }
+    /* Orbit */
 
     .orbit-container{
-
-    position:relative;
-
-    width:550px;
-
-    height:550px;
-
-    margin:2rem auto;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-    .orbit-center {
-        display: none !important; /* Hide central illustration in mobile view */
+        position:relative;
+        width:300px;
+        height:300px;
+        margin:5rem auto 2rem;
+        overflow:visible;
     }
 
-    .orbit-item {
-        position: static !important;
-        animation: none !important;
-        width: 80px;
-        height: 80px;
-        margin: 0 !important;
+    .orbit-center{
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:120px;
+        height:120px;
+        transform:translate(-50%,-50%);
+        display:flex;
+        justify-content:center;
+        align-items:center;
     }
 
-    .orbit-item a {
-        border-radius: var(--border-radius-sm);
+    .character{
+        width:130px;
+        height:auto;
     }
 
-    .orbit-label {
-        position: static !important;
-        opacity: 1;
-        pointer-events: auto;
-        background: none;
-        border: none;
-        padding: 0;
-        margin-top: 4px;
-        font-size: 0.7rem;
+    .orbit-center-glow{
+        width:130px;
+        height:130px;
     }
 
-    /* Terminal padding scale down */
-    .terminal-content {
-        padding: 1rem;
+    .orbit-item{
+        position:absolute;
+        width:65px;
+        height:65px;
     }
 
-    .terminal-form {
-        gap: 1rem;
+    .orbit-item a{
+        font-size:1.3rem;
+        border-radius:50%;
     }
 
-    .form-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
+    .orbit-label{
+        display:none;
     }
 
-    .sql-label {
-        width: auto;
+    /* Terminal */
+
+    .terminal-content{
+        padding:1rem;
+        overflow-x:auto;
     }
 
-    .terminal-input, .terminal-textarea {
-        width: 100%;
+    .easter-egg-table-container{
+        width:100%;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
     }
 
-    .form-submit-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
+    .sql-table{
+        min-width:500px;
     }
 
-    .terminal-submit-btn {
-        width: 100%;
+    .terminal-form{
+        gap:1rem;
     }
+
+    .form-row{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:.25rem;
+    }
+
+    .sql-label{
+        width:auto;
+    }
+
+    .terminal-input,
+    .terminal-textarea{
+        width:100%;
+    }
+
+    .form-submit-row{
+        flex-direction:column;
+        align-items:stretch;
+        gap:1rem;
+    }
+
+    .terminal-submit-btn{
+        width:100%;
+    }
+
 }

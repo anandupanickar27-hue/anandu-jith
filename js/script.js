@@ -174,9 +174,14 @@ const terminalOutputs = document.getElementById('terminal-outputs');
 
 if (contactForm && terminalOutputs) {
 
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
 
         e.preventDefault();
+
+        const submitBtn = document.getElementById('terminal-submit-btn');
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Executing...';
 
         const name = document.getElementById('sql-name').value;
         const email = document.getElementById('sql-email').value;
@@ -186,11 +191,8 @@ if (contactForm && terminalOutputs) {
         terminalOutputs.innerHTML = '';
 
         appendTerminalLine('mysql> CONNECT portfolio;', 'typing', 0);
-
         appendTerminalLine('Connection established.', 'success', 500);
-
         appendTerminalLine('mysql> USE portfolio;', 'typing', 1000);
-
         appendTerminalLine('Database changed.', 'success', 1500);
 
         appendTerminalLine(
@@ -200,19 +202,62 @@ VALUES ('${name}', '${email}', '${subject}', '${message.substring(0, 20)}...');`
             2200
         );
 
-        appendTerminalLine('Query OK, 1 row affected (0.02 sec)', 'success', 3800);
+        try {
 
-        appendTerminalLine('Records: 1  Duplicates: 0  Warnings: 0', 'system', 4500);
+            const formData = new FormData(contactForm);
 
-        appendTerminalLine('mysql> COMMIT;', 'typing', 5200);
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
 
-        appendTerminalLine('Query OK, 0 rows affected (0.00 sec)', 'success', 5900);
+            const result = await response.json();
 
-        appendTerminalLine('mysql> EXIT;', 'typing', 6600);
+            if (result.success) {
 
-        appendTerminalLine('Bye.', 'success', 7200);
+                appendTerminalLine('Query OK, 1 row affected (0.02 sec)', 'success', 3800);
 
-        contactForm.reset();
+                appendTerminalLine('Records: 1  Duplicates: 0  Warnings: 0', 'system', 4500);
+
+                appendTerminalLine('mysql> COMMIT;', 'typing', 5200);
+
+                appendTerminalLine('Query OK, 0 rows affected (0.00 sec)', 'success', 5900);
+
+                appendTerminalLine('Notification sent successfully.', 'success', 6600);
+
+                appendTerminalLine('mysql> EXIT;', 'typing', 7200);
+
+                appendTerminalLine('Bye.', 'success', 7800);
+
+                contactForm.reset();
+
+            } else {
+
+                appendTerminalLine(
+                    `ERROR: ${result.message || 'Failed to send message.'}`,
+                    'error',
+                    3800
+                );
+
+            }
+
+        } catch (error) {
+
+            appendTerminalLine(
+                'ERROR: Unable to connect to mail server.',
+                'error',
+                3800
+            );
+
+            console.error(error);
+
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Query';
 
     });
 
@@ -303,26 +348,32 @@ const mockContacts = [
     {
         name: "Tony Stark",
         email: "tony@starkindustries.com",
-        subject: "JARVIS Upgrade",
-        message: "Need a node interface visual synth. Let's collaborate."
+        subject: "J.A.R.V.I.S. Dashboard Upgrade",
+        message: "Need a next-generation AI dashboard with holographic UI. Interested in collaborating?"
     },
     {
-        name: "Luke Skywalker",
-        email: "luke@rebellion.org",
-        subject: "HUD Console Refit",
-        message: "X-Wing computer targets look blocky. Can you build an interactive display?"
+        name: "Bruce Wayne",
+        email: "bruce@wayneenterprises.com",
+        subject: "Batcomputer Security Audit",
+        message: "Looking for a developer to strengthen the Batcomputer's security and optimize its interface."
     },
     {
-        name: "Ada Lovelace",
-        email: "ada@analyticalengine.org",
-        subject: "Timeline Graphics",
-        message: "Fascinated by your book flip animations. Need it for engine layouts."
+        name: "Reed Richards",
+        email: "reed@baxterfoundation.org",
+        subject: "Multiverse Research Portal",
+        message: "Need an interactive portal dashboard capable of visualizing multidimensional research data."
     },
     {
-        name: "Elon Musk",
-        email: "elon@spacex.com",
-        subject: "Starship Console",
-        message: "Build a glassmorphic HUD targeting system for our Mars spacecraft."
+        name: "Cyborg",
+        email: "victor@starlabs.org",
+        subject: "S.T.A.R. Labs Neural Interface",
+        message: "Can you build a responsive control panel for my cybernetic systems and AI integrations?"
+    },
+    {
+        name: "Thor Odinson",
+        email: "thor@newasgard.gov",
+        subject: "Instagram for New Asgard",
+        message: "Lady Sif insists New Asgard needs an Instagram account. I have no idea where to begin."
     }
 ];
 
@@ -424,23 +475,98 @@ const projects = [
 
     {
 
+        title: "GoFi",
+
+        logo: "images/gofi-icon.svg",
+
+       description:
+"AI-powered productivity platform that combines intelligent note management, contextual AI assistance, and secure cloud-based storage to help users organize, search, and interact with their knowledge.",
+
+features: [
+    "Context-Aware AI Chat (RAG)",
+    "Smart Note & Category Management",
+    "Secure User Authentication",
+    "Cloud Database Integration (TiDB)",
+    "Responsive Dashboard",
+    "Semantic Search with ChromaDB"
+],
+
+tech: [
+    "Django",
+    "Python",
+    "Gemini AI",
+    "LangChain",
+    "ChromaDB",
+    "TiDB",
+    "Docker",
+    "Bootstrap",
+    "HTML",
+    "CSS",
+    "JavaScript"
+],
+
+        github: "https://github.com/anandupanickar27-hue/NotesHub",
+
+        live: "https://gofi-app.onrender.com"
+
+    },
+
+    {
+
         title: "Mekanik",
 
-        logo: "static/images/projects/mekanik.png",
+        logo: "images/mekanik-icon.svg",
 
-        description: "AI Vehicle Service Platform that helps users manage vehicles, appointments and maintenance.",
+       description: "AI-powered vehicle service platform that streamlines vehicle maintenance through intelligent diagnostics, appointment scheduling, maintenance tracking, and seamless collaboration between customers and mechanics.",
+
+features: [
+    "Vehicle & Service History Management",
+    "AI-Powered Vehicle Assistant",
+    "Mechanic Appointment Booking",
+    "Maintenance & Repair Tracking",
+    "Cloud Database Integration",
+    "Dockerized & Production Deployment"
+],
+
+tech: [
+    "Flask",
+    "SQLAlchemy",
+    "TiDB Cloud",
+    "Google Gemini AI",
+    "Docker",
+    "Gunicorn",
+    "Render",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Bootstrap"
+],
+
+        github: "https://github.com/anandupanickar27-hue/mekanik-ai-vehicle-service-platform",
+
+        live: "https://mekanik-app.onrender.com"
+
+    },
+
+    {
+
+        title: "Impruv",
+
+        logo: "images/impruv-icon.png",
+
+        description: "Student skill evaluation platform designed to assess technical proficiency through interactive assessments, analytics, and personalized learning insights.",
 
         features: [
 
-            "User Authentication",
+            "MCQ Assessments",
 
-            "Vehicle Management",
+            "Coding Challenges",
 
-            "Appointment Booking",
+            "Skill Analytics",
 
-            "AI Vehicle Assistant",
+            "Admin Dashboard",
 
-            "Dockerized Deployment"
+            "Personalized Learning Path"
 
         ],
 
@@ -450,7 +576,7 @@ const projects = [
 
             "MySQL",
 
-            "Docker",
+            "Bootstrap",
 
             "HTML",
 
@@ -460,191 +586,198 @@ const projects = [
 
         ],
 
-        github:"#",
+        github: "https://github.com/anandupanickar27-hue/impruv-skill-evaluation-system",
 
-        live:"#"
-
-    },
-
-    {
-
-        title:"Impruv",
-
-        logo:"static/images/projects/impruv.png",
-
-        description:"Student Skill Evaluation System with assessments and analytics.",
-
-        features:[
-
-            "Student Login",
-
-            "MCQ Assessments",
-
-            "Skill Analytics",
-
-            "Admin Dashboard",
-
-            "Learning Path"
-
-        ],
-
-        tech:[
-
-            "Flask",
-
-            "MySQL",
-
-            "Bootstrap",
-
-            "JavaScript"
-
-        ],
-
-        github:"#",
-
-        live:"#"
-
-    },
-
-    {
-
-        title:"Notes App",
-
-        logo:"static/images/projects/notes.png",
-
-        description:"Simple CRUD Notes Application built with Django.",
-
-        features:[
-
-            "Authentication",
-
-            "Create Notes",
-
-            "Edit Notes",
-
-            "Delete Notes",
-
-            "Responsive UI"
-
-        ],
-
-        tech:[
-
-            "Django",
-
-            "SQLite",
-
-            "Bootstrap"
-
-        ],
-
-        github:"#",
-
-        live:"#"
+        live: null
 
     }
 
 ];
 
-const modal=document.getElementById("projectModal");
+const modal = document.getElementById("projectModal");
 
-const modalLogo=document.getElementById("modalLogo");
+const modalLogo = document.getElementById("modalLogo");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalFeatures = document.getElementById("modalFeatures");
+const modalTech = document.getElementById("modalTech");
 
-const modalTitle=document.getElementById("modalTitle");
+const modalGithub = document.getElementById("modalGithub");
+const modalLive = document.getElementById("modalLive");
 
-const modalDescription=document.getElementById("modalDescription");
+const closeModal = document.getElementById("closeModal");
 
-const modalFeatures=document.getElementById("modalFeatures");
+/* Live Demo Popup */
 
-const modalTech=document.getElementById("modalTech");
+const livePopup = document.getElementById("liveDemoPopup");
+const closeLivePopup = document.getElementById("closeLivePopup");
 
-const modalGithub=document.getElementById("modalGithub");
+/* Open Project */
 
-const modalLive=document.getElementById("modalLive");
+document.querySelectorAll(".project-card").forEach((card, index) => {
 
-const closeModal=document.getElementById("closeModal");
+    card.addEventListener("click", () => {
 
-document.querySelectorAll(".project-card").forEach((card,index)=>{
+        const project = projects[index];
 
-    card.addEventListener("click",()=>{
+        modalLogo.src = project.logo;
+        modalLogo.alt = project.title;
 
-        const project=projects[index];
+        modalTitle.textContent = project.title;
 
-        modalLogo.src=project.logo;
+        modalDescription.textContent = project.description;
 
-        modalTitle.textContent=project.title;
+        modalGithub.href = project.github;
 
-        modalDescription.textContent=project.description;
+        /* Features */
 
-        modalGithub.href=project.github;
+        modalFeatures.innerHTML = "";
 
-        if(project.live==="#"){
+        project.features.forEach(feature => {
 
-    modalLive.removeAttribute("href");
-
-    modalLive.style.opacity=".5";
-
-    modalLive.style.pointerEvents="none";
-
-    modalLive.innerHTML=`
-        <i class="fa-solid fa-clock"></i>
-        Coming Soon
-    `;
-
-}else{
-
-    modalLive.href=project.live;
-
-    modalLive.style.opacity="1";
-
-    modalLive.style.pointerEvents="auto";
-
-    modalLive.innerHTML=`
-        <i class="fa-solid fa-up-right-from-square"></i>
-        Live Demo
-    `;
-
-}
-
-        modalFeatures.innerHTML="";
-
-        project.features.forEach(feature=>{
-
-            modalFeatures.innerHTML+=`<li>${feature}</li>`;
+            modalFeatures.innerHTML += `<li>${feature}</li>`;
 
         });
 
-        modalTech.innerHTML="";
+        /* Tech */
 
-        project.tech.forEach(skill=>{
+        modalTech.innerHTML = "";
 
-            modalTech.innerHTML+=`<span>${skill}</span>`;
+        project.tech.forEach(skill => {
+
+            modalTech.innerHTML += `<span>${skill}</span>`;
 
         });
+
+        /* Live Demo */
+
+        if (project.live === null) {
+
+            modalLive.style.display = "none";
+
+        }
+
+        else {
+
+            modalLive.style.display = "inline-flex";
+
+            modalLive.href = project.live;
+
+            modalLive.innerHTML = `
+                <i class="fa-solid fa-up-right-from-square"></i>
+                Live Demo
+            `;
+
+        }
 
         modal.classList.add("active");
+
+        /* Lock Background Scroll */
+
+        document.body.style.overflow = "hidden";
 
     });
 
 });
 
-closeModal.addEventListener("click",()=>{
+/* Close Modal */
+
+function closeProjectModal(){
 
     modal.classList.remove("active");
 
-});
+    document.body.style.overflow = "";
+
+}
+
+closeModal.addEventListener("click", closeProjectModal);
 
 modal.addEventListener("click",(e)=>{
 
     if(e.target===modal){
 
-        modal.classList.remove("active");
+        closeProjectModal();
 
     }
 
 });
 
-    // --- 9. Particle Background Canvas System ---
+/* Live Demo Click */
+
+modalLive.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    livePopup.classList.add("show");
+
+});
+
+const continueLiveDemo = document.getElementById("continueLiveDemo");
+
+continueLiveDemo.addEventListener("click", () => {
+
+    livePopup.classList.remove("show");
+
+    window.open(modalLive.href, "_blank");
+
+});
+/* Close Live Popup */
+
+closeLivePopup.addEventListener("click",()=>{
+
+    livePopup.classList.remove("show");
+
+});
+
+livePopup.addEventListener("click",(e)=>{
+
+    if(e.target===livePopup){
+
+        livePopup.classList.remove("show");
+
+    }
+
+});
+
+// ===========================
+// Mobile Skill Icon Preview
+// ===========================
+
+document.querySelectorAll(".skill-name").forEach(skill => {
+
+    skill.addEventListener("click", () => {
+
+        // Desktop keeps existing hover behavior
+        if (window.innerWidth > 768) return;
+
+        // Remove previous active icon
+        document.querySelectorAll(".mobile-skill-icon").forEach(icon => icon.remove());
+
+        document.querySelectorAll(".skill-name").forEach(item => {
+            if (item !== skill){
+                item.classList.remove("active");
+            }
+        });
+
+        // Toggle off if already active
+        if(skill.classList.contains("active")){
+            skill.classList.remove("active");
+            return;
+        }
+
+        skill.classList.add("active");
+
+        const icon = document.createElement("i");
+        icon.className = `${skill.dataset.icon} mobile-skill-icon`;
+
+        skill.appendChild(icon);
+
+    });
+
+});
+
+// --- 9. Particle Background Canvas System ---
+
     const canvas = document.getElementById('particles-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');

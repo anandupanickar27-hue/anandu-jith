@@ -201,22 +201,27 @@
 }
 
 /* Switch transitions */
+
+/* Dark mode → show Sun (click to switch to Light) */
 [data-theme="dark"] .icon-sun {
-    transform: translate(-50%, -150%) rotate(90deg);
-    opacity: 0;
-}
-[data-theme="dark"] .icon-moon {
     transform: translate(-50%, -50%) rotate(0deg);
     color: var(--accent-color);
     opacity: 1;
 }
 
+[data-theme="dark"] .icon-moon {
+    transform: translate(-50%, 50%) rotate(-90deg);
+    opacity: 0;
+}
+
+/* Light mode → show Moon (click to switch to Dark) */
 [data-theme="light"] .icon-sun {
+    transform: translate(-50%, -150%) rotate(90deg);
+    opacity: 0;
+}
+
+[data-theme="light"] .icon-moon {
     transform: translate(-50%, -50%) rotate(0deg);
     color: var(--accent-color);
     opacity: 1;
-}
-[data-theme="light"] .icon-moon {
-    transform: translate(-50%, 50%) rotate(-90deg);
-    opacity: 0;
 }
