@@ -407,36 +407,46 @@ if (queryContactsBtn) {
 
             let table = `
 
-            <div class="mini-query-output">
+                <button
+                    type="button"
+                    id="close-easter-egg"
+                    class="btn btn-danger close-table-btn">
 
-                <p class="output-line typing">
+                    <i class="fa-solid fa-xmark"></i>
+                    Close
 
-                    mysql&gt; SELECT * FROM contacts;
+                </button>
 
-                </p>
+                <div class="mini-query-output">
 
-                <p class="output-line success">
+                    <p class="output-line typing">
 
-                    Query OK. Fetching rows...
+                        mysql&gt; SELECT * FROM contacts;
 
-                </p>
+                    </p>
 
-                <table class="sql-table">
+                    <p class="output-line success">
 
-                    <thead>
+                        Query OK. Fetching rows...
 
-                        <tr>
+                    </p>
 
-                            <th>name</th>
-                            <th>email</th>
-                            <th>subject</th>
-                            <th>message</th>
+                    <table class="sql-table">
 
-                        </tr>
+                        <thead>
 
-                    </thead>
+                            <tr>
 
-                    <tbody>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>subject</th>
+                                <th>message</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
 
             `;
 
@@ -462,25 +472,42 @@ if (queryContactsBtn) {
 
             table += `
 
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
 
-                <div class="sql-table-meta">
+                    <div class="sql-table-meta">
 
-                    4 rows returned (0.04 sec)
+                        4 rows returned (0.04 sec)
+
+                    </div>
 
                 </div>
-
-            </div>
 
             `;
 
             easterEggResults.innerHTML = table;
-
             easterEggResults.style.display = "block";
 
+            document.getElementById("close-easter-egg").addEventListener("click", () => {
+
+                easterEggResults.style.display = "none";
+
+            });
+
         }, 500);
+
+    });
+
+}
+
+const closeTableBtn = document.getElementById("close-easter-egg");
+
+if (closeTableBtn && easterEggResults) {
+
+    closeTableBtn.addEventListener("click", () => {
+
+        easterEggResults.style.display = "none";
 
     });
 

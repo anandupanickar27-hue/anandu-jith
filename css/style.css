@@ -1197,6 +1197,20 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: auto;
 }
 
+.close-table-btn{
+
+    position: sticky;
+
+    top: 0;
+
+    left: 100%;
+
+    z-index: 20;
+
+    margin-bottom: 1rem;
+
+}
+
 .sql-table {
     width: 100%;
     border-collapse: collapse;
