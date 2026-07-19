@@ -263,6 +263,25 @@ VALUES ('${name}', '${email}', '${subject}', '${message.substring(0, 20)}...');`
 
 }
 
+function updateFavicon(theme) {
+
+    const favicon = document.getElementById("favicon");
+
+    if (!favicon) return;
+
+    favicon.href = theme === "dark"
+        ? "images/anandu-light.png"
+        : "images/anandu-dark.png";
+
+}
+
+
+
+const currentTheme =
+    document.documentElement.getAttribute("data-theme");
+
+updateFavicon(currentTheme);
+
 function appendTerminalLine(text, cssClass, delay) {
 
     setTimeout(() => {
@@ -712,6 +731,7 @@ modalLive.addEventListener("click", (e) => {
 
 });
 
+
 const continueLiveDemo = document.getElementById("continueLiveDemo");
 
 continueLiveDemo.addEventListener("click", () => {
@@ -886,3 +906,19 @@ document.querySelectorAll(".skill-name").forEach(skill => {
         });
     });
 });
+
+function updateFavicon(theme) {
+
+    const favicon = document.getElementById("favicon");
+
+    if (theme === "dark") {
+
+        favicon.href = "assets/favicon-dark.png";
+
+    } else {
+
+        favicon.href = "assets/favicon-light.png";
+
+    }
+
+}

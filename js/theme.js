@@ -24,9 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
      * Set html attributes, toggle button states, and spawn new decorative background elements.
      * @param {string} theme - 'light' | 'dark'
      */
-    function applyTheme(theme) {
+    function updateFavicon(theme) {
+
+    const favicon = document.getElementById("favicon");
+
+    if (!favicon) return;
+
+    favicon.href = theme === "dark"
+        ? "images/anandu-light.png"
+        : "images/anandu-dark.png";
+
+}
+
+function applyTheme(theme) {
 
     htmlElement.setAttribute('data-theme', theme);
+
+    updateFavicon(theme);
 
     const character = document.getElementById("character");
 
