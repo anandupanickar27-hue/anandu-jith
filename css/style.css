@@ -1441,6 +1441,112 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.project-carousel{
+
+    position:relative;
+
+    width:100%;
+
+    margin:1.5rem 0;
+
+}
+
+.project-carousel img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:12px;
+
+    object-fit:cover;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.carousel-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:rgba(0,0,0,.65);
+
+    color:#fff;
+
+    transition:.3s;
+
+    z-index:10;
+
+}
+
+.carousel-btn:hover{
+
+    background:#0ea5e9;
+
+}
+
+.prev{
+
+    left:12px;
+
+}
+
+.next{
+
+    right:12px;
+
+}
+
+.carousel-dots{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:12px;
+
+}
+
+.carousel-dots span{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#777;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.carousel-dots span.active{
+
+    background:#0ea5e9;
+
+    transform:scale(1.2);
+
+}
+
 .project-modal-content{
 
     width:min(700px,90vw);

@@ -525,31 +525,40 @@ const projects = [
 
         logo: "images/gofi-icon.svg",
 
-       description:
-"AI-powered productivity platform that combines intelligent note management, contextual AI assistance, and secure cloud-based storage to help users organize, search, and interact with their knowledge.",
+        images: [
+            "images/gofi/image1.png",
+            "images/gofi/image2.png",
+            "images/gofi/image3.png",
+            "images/gofi/image4.png",
+            "images/gofi/image5.png"
 
-features: [
-    "Context-Aware AI Chat (RAG)",
-    "Smart Note & Category Management",
-    "Secure User Authentication",
-    "Cloud Database Integration (TiDB)",
-    "Responsive Dashboard",
-    "Semantic Search with ChromaDB"
-],
+        ],
 
-tech: [
-    "Django",
-    "Python",
-    "Gemini AI",
-    "LangChain",
-    "ChromaDB",
-    "TiDB",
-    "Docker",
-    "Bootstrap",
-    "HTML",
-    "CSS",
-    "JavaScript"
-],
+        description:
+            "AI-powered productivity platform that combines intelligent note management, contextual AI assistance, and secure cloud-based storage to help users organize, search, and interact with their knowledge.",
+
+        features: [
+            "Context-Aware AI Chat (RAG)",
+            "Smart Note & Category Management",
+            "Secure User Authentication",
+            "Cloud Database Integration (TiDB)",
+            "Responsive Dashboard",
+            "Semantic Search with ChromaDB"
+        ],
+
+        tech: [
+            "Django",
+            "Python",
+            "Gemini AI",
+            "LangChain",
+            "ChromaDB",
+            "TiDB",
+            "Docker",
+            "Bootstrap",
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
 
         github: "https://github.com/anandupanickar27-hue/NotesHub",
 
@@ -563,30 +572,43 @@ tech: [
 
         logo: "images/mekanik-icon.svg",
 
-       description: "AI-powered vehicle service platform that streamlines vehicle maintenance through intelligent diagnostics, appointment scheduling, maintenance tracking, and seamless collaboration between customers and mechanics.",
+        images: [
+            "images/mekanik/image1.png",
+            "images/mekanik/image2.png",
+            "images/mekanik/image3.png",
+            "images/mekanik/image4.png",
+            "images/mekanik/image5.png",
+            "images/mekanik/image6.png",
+            "images/mekanik/image7.png",
+            "images/mekanik/image8.png",
+            "images/mekanik/image9.png"
+        ],
 
-features: [
-    "Vehicle & Service History Management",
-    "AI-Based Vehicle Issue Analysis",
-    "Mechanic Appointment Booking",
-    "Maintenance & Repair Tracking",
-    "Cloud Database Integration",
-    "Dockerized & Production Deployment"
-],
+        description:
+            "AI-powered vehicle service platform that streamlines vehicle maintenance through intelligent diagnostics, appointment scheduling, maintenance tracking, and seamless collaboration between customers and mechanics.",
 
-tech: [
-    "Flask",
-    "SQLAlchemy",
-    "TiDB Cloud",
-    "Google Gemini AI",
-    "Docker",
-    "Gunicorn",
-    "Render",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Bootstrap"
-],
+        features: [
+            "Vehicle & Service History Management",
+            "AI-Based Vehicle Issue Analysis",
+            "Mechanic Appointment Booking",
+            "Maintenance & Repair Tracking",
+            "Cloud Database Integration",
+            "Dockerized & Production Deployment"
+        ],
+
+        tech: [
+            "Flask",
+            "SQLAlchemy",
+            "TiDB Cloud",
+            "Google Gemini AI",
+            "Docker",
+            "Gunicorn",
+            "Render",
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Bootstrap"
+        ],
 
         github: "https://github.com/anandupanickar27-hue/mekanik-ai-vehicle-service-platform",
 
@@ -600,36 +622,35 @@ tech: [
 
         logo: "images/impruv-icon.png",
 
-        description: "Student skill evaluation platform designed to assess technical proficiency through interactive assessments, analytics, and personalized learning insights.",
+        images: [
+            "images/impruv/image1.png",
+            "images/impruv/image2.png",
+            "images/impruv/image3.png",
+            "images/impruv/image4.png",
+            "images/impruv/image5.png",
+            "images/impruv/image6.png",
+            "images/impruv/image7.png",
+            "images/impruv/image8.png"
+        ],
+
+        description:
+            "Student skill evaluation platform designed to assess technical proficiency through interactive assessments, analytics, and personalized learning insights.",
 
         features: [
-
             "MCQ Assessments",
-
             "Coding Challenges",
-
             "Skill Analytics",
-
             "Admin Dashboard",
-
             "Personalized Learning Path"
-
         ],
 
         tech: [
-
             "Flask",
-
             "MySQL",
-
             "Bootstrap",
-
             "HTML",
-
             "CSS",
-
             "JavaScript"
-
         ],
 
         github: "https://github.com/anandupanickar27-hue/impruv-skill-evaluation-system",
@@ -652,11 +673,48 @@ const modalGithub = document.getElementById("modalGithub");
 const modalLive = document.getElementById("modalLive");
 
 const closeModal = document.getElementById("closeModal");
+const modalImage = document.getElementById("modalImage");
+const prevImage = document.getElementById("prevImage");
+const nextImage = document.getElementById("nextImage");
+const carouselDots = document.getElementById("carouselDots");
 
+let currentImages = [];
+let currentImageIndex = 0;
 /* Live Demo Popup */
 
 const livePopup = document.getElementById("liveDemoPopup");
 const closeLivePopup = document.getElementById("closeLivePopup");
+
+function updateCarousel() {
+
+    if (currentImages.length === 0) {
+        modalImage.src = "";
+        carouselDots.innerHTML = "";
+        return;
+    }
+
+    modalImage.src = currentImages[currentImageIndex];
+
+    carouselDots.innerHTML = "";
+
+    currentImages.forEach((_, index) => {
+
+        const dot = document.createElement("span");
+
+        if (index === currentImageIndex) {
+            dot.classList.add("active");
+        }
+
+        dot.addEventListener("click", () => {
+            currentImageIndex = index;
+            updateCarousel();
+        });
+
+        carouselDots.appendChild(dot);
+
+    });
+
+}
 
 /* Open Project */
 
@@ -668,6 +726,9 @@ document.querySelectorAll(".project-card").forEach((card, index) => {
 
         modalLogo.src = project.logo;
         modalLogo.alt = project.title;
+        currentImages = project.images;
+        currentImageIndex = 0;
+        updateCarousel();
 
         modalTitle.textContent = project.title;
 
@@ -723,6 +784,34 @@ document.querySelectorAll(".project-card").forEach((card, index) => {
         document.body.style.overflow = "hidden";
 
     });
+
+});
+
+prevImage.addEventListener("click", () => {
+
+    if (currentImages.length <= 1) return;
+
+    currentImageIndex--;
+
+    if (currentImageIndex < 0) {
+        currentImageIndex = currentImages.length - 1;
+    }
+
+    updateCarousel();
+
+});
+
+nextImage.addEventListener("click", () => {
+
+    if (currentImages.length <= 1) return;
+
+    currentImageIndex++;
+
+    if (currentImageIndex >= currentImages.length) {
+        currentImageIndex = 0;
+    }
+
+    updateCarousel();
 
 });
 
