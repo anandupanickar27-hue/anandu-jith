@@ -526,11 +526,11 @@ const projects = [
         logo: "images/gofi-icon.svg",
 
         images: [
-            "images/gofi/image1.png",
-            "images/gofi/image2.png",
-            "images/gofi/image3.png",
-            "images/gofi/image4.png",
-            "images/gofi/image5.png"
+            "images/gofi/Image1.png",
+            "images/gofi/Image2.png",
+            "images/gofi/Image3.png",
+            "images/gofi/Image4.png",
+            "images/gofi/Image5.png"
 
         ],
 
@@ -573,15 +573,15 @@ const projects = [
         logo: "images/mekanik-icon.svg",
 
         images: [
-            "images/mekanik/image1.png",
-            "images/mekanik/image2.png",
-            "images/mekanik/image3.png",
-            "images/mekanik/image4.png",
-            "images/mekanik/image5.png",
-            "images/mekanik/image6.png",
-            "images/mekanik/image7.png",
-            "images/mekanik/image8.png",
-            "images/mekanik/image9.png"
+            "images/mekanik/Image1.png",
+            "images/mekanik/Image2.png",
+            "images/mekanik/Image3.png",
+            "images/mekanik/Image4.png",
+            "images/mekanik/Image5.png",
+            "images/mekanik/Image6.png",
+            "images/mekanik/Image7.png",
+            "images/mekanik/Image8.png",
+            "images/mekanik/Image9.png"
         ],
 
         description:
