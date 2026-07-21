@@ -567,7 +567,7 @@ tech: [
 
 features: [
     "Vehicle & Service History Management",
-    "AI-Powered Vehicle Assistant",
+    "AI-Based Vehicle Issue Analysis",
     "Mechanic Appointment Booking",
     "Maintenance & Repair Tracking",
     "Cloud Database Integration",
